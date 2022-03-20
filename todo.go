@@ -3,7 +3,7 @@ package todo
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"time"
 )
 
@@ -56,5 +56,5 @@ func (l *List) Save(filename string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filename, js, 0644)
+	return os.WriteFile(filename, js, 0644)
 }
