@@ -1,3 +1,3 @@
-module go-cap2/todo-cli
+module go-cap2/todoCli
 
-go 1.17
+go 1.18
