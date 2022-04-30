@@ -25,11 +25,7 @@ func main() {
 
 	switch {
 	case *list: // lista a tarefas a fazer
-		for _, item := range *l {
-			if !item.Done {
-				fmt.Println(item.Task)
-			}
-		}
+		fmt.Print(l)
 
 	case *complete > 0:
 		// ↓ altera tarefa pata finalizada (complete)
