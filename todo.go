@@ -75,3 +75,20 @@ func (l *List) Get(filename string) error {
 
 	return json.Unmarshal(file, l)
 }
+
+// alterando o método fmt.Print por meio
+// do uso do poder da Stringer interface em Go
+func (l *List) String() string {
+	formatted := ""
+
+	for k, t := range *l {
+		prefix := "  "
+		if t.Done {
+			prefix = "X "
+		}
+
+		formatted += fmt.Sprintf("%s%d: %s\n", prefix, k+1, t.Task)
+	}
+
+	return formatted
+}
