@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	todo "go-cap2/todoCli"
+	"go-cap2/todoCli/internal"
 	"os"
 )
 
@@ -15,9 +16,8 @@ func main() {
 		todoFileName = os.Getenv("TODO_FILENAME")
 	}
 
-	task := flag.String("task", "", "Tarefa a ser inclusa no ToDo List")
+	add := flag.Bool("add", false, "Tarefa a ser inclusa no ToDo List")
 	list := flag.Bool("list", false, "Listar todas as tarefas")
-	//delet := flag.Int("-del", 1, "Deletar tarefa da lista")
 	complete := flag.Int("complete", 0, "Alterar tarefa para concluida")
 
 	flag.Parse()
@@ -45,9 +45,15 @@ func main() {
 			os.Exit(1)
 		}
 
-	case *task != "":
+	case *add:
 		// ↓ adiciona nova tarefa
-		l.Add(*task)
+		t, err := internal.GetTask(os.Stdin, flag.Args()...)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+
+		l.Add(t)
 
 		// ↓ salva na lista
 		if err := l.Save(todoFileName); err != nil {
