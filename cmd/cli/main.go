@@ -15,7 +15,7 @@ func main() {
 		todoFileName = os.Getenv("TODO_FILENAME")
 	}
 
-	add := flag.Bool("add", false, "Tarefa a ser inclusa no ToDo List")
+	add := flag.Bool("add", false, "Tarefa a ser inclusa no ToDo Cli")
 	list := flag.Bool("list", false, "Listar todas as tarefas")
 	complete := flag.Int("complete", 0, "Alterar tarefa para concluida")
 

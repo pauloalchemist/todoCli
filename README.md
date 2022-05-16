@@ -1,4 +1,4 @@
-## TodoCli With Go
+## ToDo Cli With Go
 
 A simple command line tool (cli) for managing tasks.
 
@@ -12,7 +12,7 @@ In this project is exercised:
 ```zsh
 Usage of ./todocli:
   -add 
-      Tarefa a ser inclusa no ToDo List
+      Tarefa a ser inclusa no ToDo Cli
   -complete int
     	Alterar tarefa para concluida
   -list
