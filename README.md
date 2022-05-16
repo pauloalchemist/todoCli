@@ -11,10 +11,10 @@ In this project is exercised:
 
 ```zsh
 Usage of ./todocli:
+  -add 
+      Tarefa a ser inclusa no ToDo List
   -complete int
     	Alterar tarefa para concluida
   -list
     	Listar todas as tarefas
-  -task string
-    	Tarefa a ser inclusa no ToDo List
 ```
