@@ -13,4 +13,8 @@ clean:
 	go clean
 	rm -rf ./bin/todo
 
- 
+test:
+	go test -v ./...
+
+test_coverage:
+	go test -v ./... -coverprofile=coverage.out
