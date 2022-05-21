@@ -1,4 +1,5 @@
-BINARY_NAME=todo
+include .env 
+export
 
 build:
 	go build -o bin/${BINARY_NAME} ./cmd/cli/main.go
