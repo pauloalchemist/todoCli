@@ -13,9 +13,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var (
-	binName = "todo"
-)
+var binName = "todo"
 
 func TestMain(m *testing.M) {
 	err := godotenv.Load("../../.env")
