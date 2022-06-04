@@ -3,19 +3,28 @@ package main_test
 import (
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"runtime"
 	"testing"
+
+	"github.com/joho/godotenv"
 )
 
 var (
-	binName  = "todo"
-	fileName = ".todo.json"
+	binName = "todo"
 )
 
 func TestMain(m *testing.M) {
+	err := godotenv.Load("../../.env")
+	if err != nil {
+		log.Fatal("Erro ao carregar arquivo .env")
+	}
+
+	todoFileName := os.Getenv("TODO_FILENAME")
+
 	fmt.Println("Building tool...")
 	if runtime.GOOS == "windows" {
 		binName += ".exe"
@@ -33,7 +42,7 @@ func TestMain(m *testing.M) {
 
 	fmt.Println("Cleaning up...")
 	os.Remove(binName)
-	os.Remove(fileName)
+	os.Remove(todoFileName)
 
 	os.Exit(result)
 }
