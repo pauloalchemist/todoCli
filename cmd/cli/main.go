@@ -18,6 +18,7 @@ func main() {
 	add := flag.Bool("add", false, "Tarefa a ser inclusa no ToDo Cli")
 	list := flag.Bool("list", false, "Listar todas as tarefas")
 	complete := flag.Int("complete", 0, "Alterar tarefa para concluida")
+	del := flag.Int("del", 0, "Deleta tarefa da lista")
 
 	flag.Parse()
 
@@ -55,6 +56,17 @@ func main() {
 		l.Add(t)
 
 		// ↓ salva na lista
+		if err := l.Save(todoFileName); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+
+	case *del > 0:
+		if err := l.Delete(*del); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+
 		if err := l.Save(todoFileName); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
